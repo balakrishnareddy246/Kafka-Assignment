@@ -1,0 +1,10 @@
+# These are the fiv steps to run server in kafka assignment by simple kafka producer and consumer can
+step1: bin/zookeeper-server-start.sh config/zookeeper.properties
+step2: JMX_PORT=8004 bin/kafka-server-start.sh config/server.properties
+step3: bin/kafka-topics.sh --create \
+    --zookeeper localhost:2181 \
+    --replication-factor 1 \
+    --partitions 1 \
+    --topic test
+step4: ./kafka-console-producer.sh --broker-list localhost:9092 --topic test-topic
+step5: ./kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic test-topic --from-beginning
